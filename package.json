@@ -1,0 +1,11 @@
+{
+  "name": "react-native-pagenation-listview",
+  "version": "0.0.1",
+  "description": "",
+  "main": "PagenationListView.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Blake Tarter <blakertarter@gmail.com> (http://blaketarter.com)",
+  "license": "ISC"
+}
