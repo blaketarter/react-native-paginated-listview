@@ -1,5 +1,3 @@
-'use strict';
-
 const React = require('react');
 
 const {
@@ -10,6 +8,13 @@ const {
   ActivityIndicator,
   StyleSheet,
 } = require('react-native');
+
+const styles = StyleSheet.create({
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 const PropTypes = {
   onFetch: React.PropTypes.func.isRequired,
@@ -43,7 +48,7 @@ const DefaultProps = {
       <Text>Load More...</Text>
     </View>
   ),
-  renderLoadingComponent: (isFetching) => (
+  renderLoadingComponent: isFetching => (
     <View>
       <ActivityIndicator
         style={styles.center}
@@ -52,13 +57,6 @@ const DefaultProps = {
     </View>
   ),
 };
-
-const styles = StyleSheet.create({
-  center: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 class PagenationListView extends React.Component {
   constructor(props) {
@@ -69,7 +67,7 @@ class PagenationListView extends React.Component {
       pageSize: this.props.pageSize,
       data: this.props.initialData,
       hasMoreData: true,
-      isFetching: this.props.initialData.length ? false : true,
+      isFetching: !this.props.initialData.length,
     };
   }
 
@@ -153,7 +151,9 @@ class PagenationListView extends React.Component {
         enableEmptySections={this.props.enableEmptySections}
         renderSeparator={this.props.renderSeperator}
         renderHeader={this.props.renderHeader}
-        renderFooter={this.props.autoFetch ? this.props.renderFooter : this.renderFetchMoreComponentWrapper}
+        renderFooter={
+          this.props.autoFetch ? this.props.renderFooter : this.renderFetchMoreComponentWrapper
+        }
         renderSectionHeader={this.props.renderSectionHeader}
         onChangeVisibleRows={this.props.onChangeVisibleRows}
         renderScrollComponent={this.props.renderScrollComponent}
