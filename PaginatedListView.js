@@ -58,7 +58,7 @@ const DefaultProps = {
   ),
 };
 
-class PagenationListView extends React.Component {
+class PaginatedListView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -166,7 +166,7 @@ class PagenationListView extends React.Component {
   }
 }
 
-PagenationListView.propTypes = PropTypes;
-PagenationListView.defaultProps = DefaultProps;
+PaginatedListView.propTypes = PropTypes;
+PaginatedListView.defaultProps = DefaultProps;
 
-module.exports = PagenationListView;
+module.exports = PaginatedListView;

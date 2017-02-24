@@ -2,7 +2,7 @@ const React = require('react');
 const {
   Text,
 } = require('react-native');
-const PagenationListView = require('./PagenationListView.js');
+const PaginatedListView = require('./PaginatedListView.js');
 
 class Example extends React.Component {
   onFetch(page, count) {
@@ -26,7 +26,7 @@ class Example extends React.Component {
 
   render() {
     return (
-      <PagenationListView
+      <PaginatedListView
         style={{marginTop: 25}}
         renderRow={(rowData) => {
           return (<Text key={rowData} style={{

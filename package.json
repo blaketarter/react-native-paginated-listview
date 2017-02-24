@@ -1,7 +1,7 @@
 {
-  "name": "react-native-pagenation-listview",
+  "name": "react-native-paginated-listview",
   "version": "0.0.1",
-  "description": "A simple pagenated react-native ListView with a few customization options",
+  "description": "A simple paginated react-native ListView with a few customization options",
   "keywords": [
     "react",
     "native",
@@ -9,12 +9,12 @@
     "ListView",
     "infinite",
     "scroll",
-    "pagenation",
-    "pagenated"
+    "paginated",
+    "pagenation"
   ],
-  "main": "PagenationListView.js",
+  "main": "PaginatedListView.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint PagenationListView.js",
+    "lint": "./node_modules/.bin/eslint PaginatedListView.js",
     "test": "./node_modules/.bin/jest"
   },
   "devDependencies": {

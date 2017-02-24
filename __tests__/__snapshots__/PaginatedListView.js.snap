@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PagenationListView /> Can render like a normal ListView 1`] = `
+exports[`<PaginatedListView /> Can render like a normal ListView 1`] = `
 <View>
   <RCTScrollView>
     <View>

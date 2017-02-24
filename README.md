@@ -1,19 +1,19 @@
-react-native-pagenation-listview
+react-native-paginated-listview
 =====
 A simple pagenated react-native ListView with a few customization options, usefull
 for working with pagenated data. It can either auto fetch data - like an infinite scrolling list -
 or it can render a load more button and a loading spinner.
 
 ## Installation
-`npm install react-native-pagenation-listview --save`
+`npm install react-native-paginated-listview --save`
 
 ## Basic Usage
 Import the component
 
-`import PagenationListView from 'react-native-pagenation-listview'`
+`import PaginatedListView from 'react-native-paginated-listview'`
 
 ```js
-<PagenationListView
+<PaginatedListView
   renderRow={(rowData) => {
     return (<Text>{rowData}</Text>);
   }}
@@ -32,11 +32,11 @@ The number of items in each page, needed so that the ListView knows when its rea
 * `initialData: array [optional]`
 The initial data to populate the ListView with
 
-* `pagenationEnabled: boolean [defaults to true]`
-Whether or not pagenation is pagenationEnabled
+* `paginatedEnabled: boolean [defaults to true]`
+Whether or not paginated is paginatedEnabled
 
 * `autoFetch: boolean [defaults to true]`
-Whether or not PagenationListView should auto fetch new data when it reaches the end
+Whether or not PaginatedListView should auto fetch new data when it reaches the end
 
 * `renderFetchMoreComponent: function [optional]`
 A function that should return the component to be displayed when the end of the data is reached and auto fetch is set to false

@@ -3,13 +3,13 @@ const React = require('react');
 const { shallow } = require('enzyme');
 const renderer = require('react-test-renderer');
 
-const PagenationListView = require('../PagenationListView');
+const PaginatedListView = require('../PaginatedListView');
 const oneThroughTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-describe('<PagenationListView />', () => {
+describe('<PaginatedListView />', () => {
   it('Can render like a normal ListView', () => {
     const tree = renderer.create(
-      <PagenationListView
+      <PaginatedListView
         renderRow={(data) => <Text>{data}</Text>}
         initialData={oneThroughTen}
       />
@@ -18,7 +18,7 @@ describe('<PagenationListView />', () => {
     expect(tree).toMatchSnapshot();
 
     const wrapper = shallow(
-      <PagenationListView
+      <PaginatedListView
         renderRow={(data) => <Text>{data}</Text>}
         initialData={oneThroughTen}
       />
