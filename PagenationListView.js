@@ -4,6 +4,11 @@ const React = require('react');
 
 const {
   ListView,
+  TouchableWithoutFeedback,
+  View,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
 } = require('react-native');
 
 const PropTypes = {
@@ -21,6 +26,9 @@ const PropTypes = {
   pagenationEnabled: React.PropTypes.bool,
   onChangeVisibleRows: React.PropTypes.func,
   renderScrollComponent: React.PropTypes.func,
+  autoFetch: React.PropTypes.bool,
+  renderFetchMoreComponent: React.PropTypes.func,
+  renderLoadingComponent: React.PropTypes.func,
 };
 
 const DefaultProps = {
@@ -29,7 +37,28 @@ const DefaultProps = {
   enableEmptySections: true,
   scrollEnabled: true,
   pagenationEnabled: true,
+  autoFetch: true,
+  renderFetchMoreComponent: () => (
+    <View style={styles.center}>
+      <Text>Load More...</Text>
+    </View>
+  ),
+  renderLoadingComponent: (isFetching) => (
+    <View>
+      <ActivityIndicator
+        style={styles.center}
+        animating={isFetching}
+      />
+    </View>
+  ),
 };
+
+const styles = StyleSheet.create({
+  center: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 class PagenationListView extends React.Component {
   constructor(props) {
@@ -40,6 +69,7 @@ class PagenationListView extends React.Component {
       pageSize: this.props.pageSize,
       data: this.props.initialData,
       hasMoreData: true,
+      isFetching: this.props.initialData.length ? false : true,
     };
   }
 
@@ -50,6 +80,10 @@ class PagenationListView extends React.Component {
   }
 
   fetchNewRowData = () => {
+    this.setState({
+      isFetching: true,
+    });
+
     this.props.onFetch(this.state.page + 1, this.state.pageSize)
       .then((newData) => {
         if (newData && newData.length) {
@@ -57,10 +91,12 @@ class PagenationListView extends React.Component {
             page: this.state.page + 1,
             data: [...this.state.data, ...newData],
             hasMoreData: newData.length >= this.state.pageSize,
+            isFetching: false,
           });
         } else {
           this.setState({
             hasMoreData: false,
+            isFetching: false,
           });
         }
       });
@@ -68,12 +104,37 @@ class PagenationListView extends React.Component {
 
   onEndReached = () => {
     if (
+      this.props.autoFetch &&
       this.props.pagenationEnabled &&
       this.state.data.length &&
       this.state.hasMoreData
     ) {
       this.fetchNewRowData();
     }
+  }
+
+  renderFetchMoreComponentWrapper = () => {
+    if (
+      !this.props.autoFetch &&
+      this.props.pagenationEnabled &&
+      this.state.isFetching
+    ) {
+      return this.props.renderLoadingComponent(this.state.isFetching);
+    } else if (
+      !this.props.autoFetch &&
+      this.props.pagenationEnabled &&
+      this.state.data.length &&
+      this.state.hasMoreData
+    ) {
+      return (
+        <TouchableWithoutFeedback onPress={this.fetchNewRowData}>
+          <View>
+            {this.props.renderFetchMoreComponent()}
+          </View>
+        </TouchableWithoutFeedback>
+      );
+    }
+    return null;
   }
 
   render() {
@@ -92,7 +153,7 @@ class PagenationListView extends React.Component {
         enableEmptySections={this.props.enableEmptySections}
         renderSeparator={this.props.renderSeperator}
         renderHeader={this.props.renderHeader}
-        renderFooter={this.props.renderFooter}
+        renderFooter={this.props.autoFetch ? this.props.renderFooter : this.renderFetchMoreComponentWrapper}
         renderSectionHeader={this.props.renderSectionHeader}
         onChangeVisibleRows={this.props.onChangeVisibleRows}
         renderScrollComponent={this.props.renderScrollComponent}

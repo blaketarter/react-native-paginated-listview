@@ -1,7 +1,17 @@
 {
   "name": "react-native-pagenation-listview",
   "version": "0.0.1",
-  "description": "",
+  "description": "A simple pagenated react-native ListView with a few customization options",
+  "keywords": [
+    "react",
+    "native",
+    "react-native",
+    "ListView",
+    "infinite",
+    "scroll",
+    "pagenation",
+    "pagenated"
+  ],
   "main": "PagenationListView.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
