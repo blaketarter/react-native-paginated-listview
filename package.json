@@ -15,7 +15,8 @@
   "main": "PaginatedListView.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint PaginatedListView.js",
-    "test": "./node_modules/.bin/jest"
+    "jest": "./node_modules/.bin/jest",
+    "test": "npm run lint && npm run jest"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

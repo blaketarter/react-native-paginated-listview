@@ -6,3 +6,4 @@ BasicExample.js
 jsconfig.json
 yarn.lock
 __tests__
+.travis.yml

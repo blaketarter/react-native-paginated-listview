@@ -1,8 +1,10 @@
+[![Build Status](https://travis-ci.org/blaketarter/react-native-paginated-listview.svg?branch=master)](https://travis-ci.org/blaketarter/react-native-paginated-listview)
+
 react-native-paginated-listview
 =====
-A simple pagenated react-native ListView with a few customization options, usefull
-for working with pagenated data. It can either auto fetch data - like an infinite scrolling list -
-or it can render a load more button and a loading spinner.
+A simple paginated react-native ListView with a few customization options, usefull
+for working with paginated data. It can either auto fetch data - like an infinite scrolling list -
+or it can render a "load more" button and a loading spinner.
 
 ## Installation
 `npm install react-native-paginated-listview --save`
