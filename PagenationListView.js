@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
 });
 
 const PropTypes = {
-  onFetch: React.PropTypes.func.isRequired,
+  onFetch: React.PropTypes.func,
   renderRow: React.PropTypes.func.isRequired,
-  pageSize: React.PropTypes.number.isRequired,
+  pageSize: React.PropTypes.number,
   rowHasChanged: React.PropTypes.func,
   initialData: React.PropTypes.array,
   enableEmptySections: React.PropTypes.bool,

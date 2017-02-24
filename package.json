@@ -15,7 +15,7 @@
   "main": "PagenationListView.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint PagenationListView.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/jest"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
@@ -27,9 +27,15 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.0",
+    "jest": "19.0.2",
     "react": "~15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-native": "0.41.2",
-    "jest": "19.0.1"
+    "react-test-renderer": "~15.4.2"
+  },
+  "jest": {
+    "preset": "react-native"
   },
   "author": "Blake Tarter <blakertarter@gmail.com> (http://blaketarter.com)",
   "license": "ISC"
