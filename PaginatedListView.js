@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 const PropTypes = {
   onFetch: React.PropTypes.func,
   renderRow: React.PropTypes.func.isRequired,
-  pageSize: React.PropTypes.number,
+  itemsPerPage: React.PropTypes.number,
   rowHasChanged: React.PropTypes.func,
   initialData: React.PropTypes.array,
   enableEmptySections: React.PropTypes.bool,
@@ -64,7 +64,7 @@ class PaginatedListView extends React.Component {
 
     this.state = {
       page: this.props.initialData.length ? 1 : 0,
-      pageSize: this.props.pageSize,
+      itemsPerPage: this.props.itemsPerPage,
       data: this.props.initialData,
       hasMoreData: true,
       isFetching: !this.props.initialData.length,
@@ -82,13 +82,13 @@ class PaginatedListView extends React.Component {
       isFetching: true,
     });
 
-    this.props.onFetch(this.state.page + 1, this.state.pageSize)
+    this.props.onFetch(this.state.page + 1)
       .then((newData) => {
         if (newData && newData.length) {
           this.setState({
             page: this.state.page + 1,
             data: [...this.state.data, ...newData],
-            hasMoreData: newData.length >= this.state.pageSize,
+            hasMoreData: newData.length >= this.state.itemsPerPage,
             isFetching: false,
           });
         } else {
@@ -158,7 +158,7 @@ class PaginatedListView extends React.Component {
         onChangeVisibleRows={this.props.onChangeVisibleRows}
         renderScrollComponent={this.props.renderScrollComponent}
         scrollEnabled={this.props.scrollEnabled}
-        pageSize={this.props.pageSize}
+        itemsPerPage={this.props.itemsPerPage}
 
         { ...this.props }
       />

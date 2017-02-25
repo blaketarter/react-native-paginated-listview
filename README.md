@@ -25,10 +25,10 @@ Import the component
 ```
 
 ## API
-* `onFetch: function(pageNumber, pageSize)`
+* `onFetch: function(pageNumber)`
 Method that return a promise and resolve the array of data to add to the ListView
 
-* `pageSize: number`
+* `itemsPerPage: number`
 The number of items in each page, needed so that the ListView knows when its reached the end of the data
 
 * `initialData: array [optional]`
