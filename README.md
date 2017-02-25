@@ -19,7 +19,7 @@ Import the component
   renderRow={(rowData) => {
     return (<Text>{rowData}</Text>);
   }}
-  pageSize={10}
+  itemsPerPage={10}
   onFetch={this.onFetch}
 />
 ```
