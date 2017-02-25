@@ -7,3 +7,4 @@ jsconfig.json
 yarn.lock
 __tests__
 .travis.yml
+.vscode
