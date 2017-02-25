@@ -34,8 +34,8 @@ The number of items in each page, needed so that the ListView knows when its rea
 * `initialData: array [optional]`
 The initial data to populate the ListView with
 
-* `paginatedEnabled: boolean [defaults to true]`
-Whether or not paginated is paginatedEnabled
+* `paginationEnabled: boolean [defaults to true]`
+Whether or not pagination is enabled
 
 * `autoFetch: boolean [defaults to true]`
 Whether or not PaginatedListView should auto fetch new data when it reaches the end

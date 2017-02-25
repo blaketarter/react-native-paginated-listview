@@ -28,7 +28,7 @@ const PropTypes = {
   renderFooter: React.PropTypes.func,
   renderSectionHeader: React.PropTypes.func,
   scrollEnabled: React.PropTypes.bool,
-  pagenationEnabled: React.PropTypes.bool,
+  paginationEnabled: React.PropTypes.bool,
   onChangeVisibleRows: React.PropTypes.func,
   renderScrollComponent: React.PropTypes.func,
   autoFetch: React.PropTypes.bool,
@@ -41,7 +41,7 @@ const DefaultProps = {
   initialData: [],
   enableEmptySections: true,
   scrollEnabled: true,
-  pagenationEnabled: true,
+  paginationEnabled: true,
   autoFetch: true,
   renderFetchMoreComponent: () => (
     <View style={styles.center}>
@@ -103,7 +103,7 @@ class PaginatedListView extends React.Component {
   onEndReached = () => {
     if (
       this.props.autoFetch &&
-      this.props.pagenationEnabled &&
+      this.props.paginationEnabled &&
       this.state.data.length &&
       this.state.hasMoreData
     ) {
@@ -114,13 +114,13 @@ class PaginatedListView extends React.Component {
   renderFetchMoreComponentWrapper = () => {
     if (
       !this.props.autoFetch &&
-      this.props.pagenationEnabled &&
+      this.props.paginationEnabled &&
       this.state.isFetching
     ) {
       return this.props.renderLoadingComponent(this.state.isFetching);
     } else if (
       !this.props.autoFetch &&
-      this.props.pagenationEnabled &&
+      this.props.paginationEnabled &&
       this.state.data.length &&
       this.state.hasMoreData
     ) {

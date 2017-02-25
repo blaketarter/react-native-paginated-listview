@@ -2,7 +2,7 @@ const React = require('react');
 const {
   Text,
 } = require('react-native');
-const PaginatedListView = require('./PaginatedListView.js');
+const PaginatedListView = require('react-native-paginated-listview');
 
 class Example extends React.Component {
   onFetch(page, count) {
@@ -43,7 +43,7 @@ class Example extends React.Component {
             color: 'white',
           }}>{rowData}</Text>);
         }}
-        pageSize={10}
+        itemsPerPage={10}
         onFetch={this.onFetch}
         // autoFetch={false}
       />
