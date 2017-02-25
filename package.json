@@ -1,6 +1,6 @@
 {
   "name": "react-native-paginated-listview",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "A simple paginated react-native ListView with a few customization options",
   "keywords": [
     "react",
