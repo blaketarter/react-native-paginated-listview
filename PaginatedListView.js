@@ -114,7 +114,7 @@ class PaginatedListView extends React.Component {
 
   renderFetchMoreComponentWrapper = () => {
     if (
-      !this.props.autoFetch &&
+      this.props.autoFetch &&
       this.props.paginationEnabled &&
       this.state.isFetching
     ) {
