@@ -92,6 +92,7 @@ class PaginatedListView extends React.Component {
             isFetching: false,
           });
         } else {
+          this.props.onHasNoMoreData();
           this.setState({
             hasMoreData: false,
             isFetching: false,
