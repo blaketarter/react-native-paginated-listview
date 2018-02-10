@@ -16,26 +16,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const PropTypes = {
-  onFetch: React.PropTypes.func,
-  renderRow: React.PropTypes.func.isRequired,
-  itemsPerPage: React.PropTypes.number,
-  rowHasChanged: React.PropTypes.func,
-  initialData: React.PropTypes.array,
-  enableEmptySections: React.PropTypes.bool,
-  renderSeperator: React.PropTypes.func,
-  renderHeader: React.PropTypes.func,
-  renderFooter: React.PropTypes.func,
-  renderSectionHeader: React.PropTypes.func,
-  scrollEnabled: React.PropTypes.bool,
-  paginationEnabled: React.PropTypes.bool,
-  onChangeVisibleRows: React.PropTypes.func,
-  renderScrollComponent: React.PropTypes.func,
-  autoFetch: React.PropTypes.bool,
-  renderFetchMoreComponent: React.PropTypes.func,
-  renderLoadingComponent: React.PropTypes.func,
-};
-
 const DefaultProps = {
   rowHasChanged: (r1, r2) => r1 !== r2,
   initialData: [],
@@ -92,6 +72,7 @@ class PaginatedListView extends React.Component {
             isFetching: false,
           });
         } else {
+          this.props.onHasNoMoreData(this.state.page);
           this.setState({
             hasMoreData: false,
             isFetching: false,
@@ -113,7 +94,7 @@ class PaginatedListView extends React.Component {
 
   renderFetchMoreComponentWrapper = () => {
     if (
-      !this.props.autoFetch &&
+      this.props.autoFetch &&
       this.props.paginationEnabled &&
       this.state.isFetching
     ) {
@@ -166,7 +147,6 @@ class PaginatedListView extends React.Component {
   }
 }
 
-PaginatedListView.propTypes = PropTypes;
 PaginatedListView.defaultProps = DefaultProps;
 
 module.exports = PaginatedListView;
